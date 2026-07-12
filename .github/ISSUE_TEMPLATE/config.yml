@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions & ideas (Discussions)
+    url: https://github.com/EnigmaDevelop/resume-signal-sifter/discussions
+    about: For questions, setup help, and showing off your own Signal Sifter.

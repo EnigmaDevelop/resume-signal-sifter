@@ -2,6 +2,18 @@
 
 # Signal Sifter
 
+<p align="center">
+  <a href="https://enigmadevelop.github.io/resume-signal-sifter/"><strong>▶ Live demo</strong></a> ·
+  <a href="#interview-practice-mode-hidden">Practice mode</a> ·
+  <a href="#get-your-own-fork--fill--deploy">Get your own</a>
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+  <a href="https://github.com/EnigmaDevelop/resume-signal-sifter/actions/workflows/deploy.yml"><img alt="Deploy" src="https://github.com/EnigmaDevelop/resume-signal-sifter/actions/workflows/deploy.yml/badge.svg"></a>
+  <a href="CONTRIBUTING.md"><img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"></a>
+</p>
+
 An interactive, chat-style resume/CV. Visitors browse it like a messaging app in two modes: **static mode** (button-driven, 100% deterministic, no LLM calls) and **AI mode** (a real LLM conversation grounded strictly in your resume + story data, with per-answer source citations). For you, the candidate, there is a third, hidden face: an **interview practice simulator** that interviews you about your own story and coaches every answer.
 
 Signal Sifter is built for the candidate first:
@@ -86,6 +98,10 @@ Logo and favicon prompts for image generation live in [docs/branding.md](docs/br
    and push. Free on Groq's tier, or [bring your own provider](#ai-budget--bring-your-own-provider).
 7. **Use it:** put the link in your CV ([wording above](#put-it-in-your-cv)), and rehearse with `?practice=1` before real interviews.
 8. **Regenerate marketing screenshots (optional):** `npm run shots` — uses a local mock, spends no tokens.
+
+## Contributing
+
+Bug reports, translations, and PRs are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Questions and show-and-tell live in [Discussions](https://github.com/EnigmaDevelop/resume-signal-sifter/discussions). Licensed under [MIT](LICENSE).
 
 ## Support this project
 

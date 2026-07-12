@@ -1,0 +1,23 @@
+name: Feature request
+description: An idea to make Signal Sifter better.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the need from a candidate's or recruiter's point of view.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      placeholder: Optional — how you imagine it working.
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Fit with the project's principles
+      options:
+        - label: This can work on the zero-cost default stack (or is clearly optional)
+        - label: This works in both TR and EN (or is language-independent)
