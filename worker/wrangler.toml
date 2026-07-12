@@ -16,8 +16,8 @@ RATE_LIMIT_PER_MINUTE = "10"
 #   wrangler secret put LLM_API_KEY
 # (The legacy GROQ_MODEL var and GROQ_API_KEY secret keep working as fallbacks.)
 #
-# LLM_ENDPOINT = "https://api.openai.com/v1/chat/completions"
-# LLM_MODEL = "gpt-4o-mini"
+LLM_ENDPOINT = "https://api.openai.com/v1/chat/completions"
+LLM_MODEL = "gpt-4o-mini"
 #
 # Other examples:
 #   OpenRouter: https://openrouter.ai/api/v1/chat/completions  (any listed model)
