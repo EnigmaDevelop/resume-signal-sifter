@@ -6,7 +6,7 @@
     "default": "system"
   },
   "aiMode": {
-    "enabled": false,
-    "endpoint": ""
+    "enabled": true,
+    "endpoint": "https://signal-sifter-worker.enigmadevelop.workers.dev"
   }
 }
