@@ -1,8 +1,35 @@
 # Signal Sifter Worker
 
-A Cloudflare Worker that proxies chat requests to Groq's free-tier Llama 3.3
-70B API. It owns the system prompt, the CV-grounding guardrails, CORS, and a
-best-effort per-IP rate limit — the frontend never talks to Groq directly.
+A Cloudflare Worker that proxies chat requests to an OpenAI-compatible LLM
+API — Groq's free-tier Llama 3.3 70B by default. It owns the system prompt,
+the CV-grounding guardrails, CORS, and a best-effort per-IP rate limit — the
+frontend never talks to the LLM provider directly.
+
+## Choosing a provider
+
+The default (no configuration beyond a `GROQ_API_KEY` secret) is Groq's free
+tier. To use any other OpenAI-compatible provider, set in `wrangler.toml`:
+
+```toml
+LLM_ENDPOINT = "https://api.openai.com/v1/chat/completions"
+LLM_MODEL = "gpt-4o-mini"
+```
+
+and store the key with `wrangler secret put LLM_API_KEY`. OpenRouter,
+Together, Fireworks, Mistral, and DeepSeek endpoints all speak the same
+contract — see the commented examples in `wrangler.toml`. Handy when the free
+tier's daily budget (below) is too tight for your traffic.
+
+## Free-tier budget (Groq default)
+
+Groq's free tier allows ≈**100k tokens/day** for `llama-3.3-70b-versatile`
+(plus per-minute caps — see console.groq.com/docs/rate-limits). Every request
+embeds the full résumé+story JSON in the system prompt, so in practice:
+
+- one represent-mode Q&A ≈ 3.5–4.5k tokens → **~20–25 visitor Q&As per day**
+  (total across all visitors);
+- one full practice session (~6 questions, history grows each turn) ≈
+  35–50k tokens → **~2 sessions per day**.
 
 This is optional. If you don't deploy it (or leave `aiMode.enabled: false` in
 `content/config.json`), the site works fully in static mode with zero backend.
@@ -54,10 +81,9 @@ at `temperature 0.5, max_tokens 700` (represent: `0.4/600`).
   and story JSON on every request in both modes, and `sanitizeMessages`
   strips injected `system`-role messages identically.
 - The `?practice=1` entrance is hidden, not secret (the code is public). The
-  worst case is rate-limited token spend on your Groq key.
-- Token budget: a full practice session (~6 questions with coaching) costs
-  roughly 35–50k tokens, so Groq's free tier (100k tokens/day) covers about
-  two sessions a day plus normal visitor traffic.
+  worst case is rate-limited token spend on your API key.
+- Token budget: see "Free-tier budget" above — if you practice regularly,
+  pointing `LLM_ENDPOINT` at a cheap paid model is the intended escape hatch.
 
 ## Deploy
 

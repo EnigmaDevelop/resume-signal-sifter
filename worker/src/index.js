@@ -1,5 +1,18 @@
-const GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions";
+// Default provider is Groq's free tier, but any OpenAI-compatible
+// chat-completions API works — override LLM_ENDPOINT / LLM_MODEL in
+// wrangler.toml and set the LLM_API_KEY secret to bring your own provider
+// (OpenAI, OpenRouter, Together, Fireworks, Mistral, DeepSeek, ...).
+// The legacy GROQ_* names keep working as fallbacks.
+const DEFAULT_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions";
 const DEFAULT_MODEL = "llama-3.3-70b-versatile";
+
+function providerConfig(env) {
+  return {
+    endpoint: env.LLM_ENDPOINT || DEFAULT_ENDPOINT,
+    model: env.LLM_MODEL || env.GROQ_MODEL || DEFAULT_MODEL,
+    apiKey: env.LLM_API_KEY || env.GROQ_API_KEY,
+  };
+}
 const MAX_MESSAGES = 20;
 const MAX_CONTENT_LENGTH = 2000;
 const MAX_RESUME_JSON_LENGTH = 20_000;
@@ -260,18 +273,19 @@ async function handleChat(request, env, ctx) {
     return new Response("No valid messages", { status: 400, headers: cors });
   }
 
-  if (!env.GROQ_API_KEY) {
-    return new Response("Worker is missing GROQ_API_KEY", { status: 500, headers: cors });
+  const provider = providerConfig(env);
+  if (!provider.apiKey) {
+    return new Response("Worker is missing LLM_API_KEY (or GROQ_API_KEY)", { status: 500, headers: cors });
   }
 
-  const groqRes = await fetch(GROQ_ENDPOINT, {
+  const groqRes = await fetch(provider.endpoint, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${env.GROQ_API_KEY}`,
+      Authorization: `Bearer ${provider.apiKey}`,
     },
     body: JSON.stringify({
-      model: env.GROQ_MODEL || DEFAULT_MODEL,
+      model: provider.model,
       messages: [
         {
           role: "system",

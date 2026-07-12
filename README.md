@@ -25,7 +25,17 @@ Open your deployed site with **`?practice=1`** (optionally `&persona=manager`) a
 
 Finish any time with the 🏁 chip to get an overall evaluation (2 strengths, 2 growth priorities, a one-sentence hiring signal).
 
-The entrance is deliberately unlinked: visitors and recruiters only ever see the public represent mode. It requires AI mode to be enabled, is protected by the same rate limit and prompt guardrails, and exposes no data the public mode doesn't already send. Budget note: a full session costs ~35–50k tokens, so Groq's free tier covers about two practice sessions a day.
+![Practice mode coaching](docs/screenshots/en/08-practice-coaching.png)
+
+The entrance is deliberately unlinked: visitors and recruiters only ever see the public represent mode. It requires AI mode to be enabled, is protected by the same rate limit and prompt guardrails, and exposes no data the public mode doesn't already send.
+
+## AI budget & bring your own provider
+
+The default zero-cost setup runs on Groq's free tier: ≈**100k tokens/day**. Every request embeds your full résumé+story in the prompt, so that works out to roughly **20–25 visitor Q&As per day**, or **~2 full practice sessions** — plenty for a personal site, tight if you practice a lot.
+
+The Worker speaks the OpenAI-compatible chat-completions contract, so you can point it at **any provider** for longer conversations: set `LLM_ENDPOINT`/`LLM_MODEL` in `worker/wrangler.toml` and a `LLM_API_KEY` secret (OpenAI, OpenRouter, Together, Mistral, DeepSeek… — examples in [worker/README.md](worker/README.md)). No frontend changes needed.
+
+Roadmap idea (not implemented): a visitor-supplied API key field, so candidates practicing on a fork could pay for their own tokens without touching the deployed Worker's key.
 
 ## Put it in your CV
 
