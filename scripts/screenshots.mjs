@@ -183,7 +183,9 @@ async function captureGroundingProof(browser, lang) {
 }
 
 async function capturePracticeCoaching(browser, lang) {
-  const page = await newAppPage(browser, { lang });
+  // Taller viewport so the full arc (question -> weak answer -> coach note ->
+  // follow-up) fits without clipping any bubble mid-sentence.
+  const page = await newAppPage(browser, { lang, viewport: { width: 420, height: 940 } });
   const [, weakTurn] = conversations[lang].practice;
 
   await page.goto(`${VITE_ORIGIN}/?practice=1`);
@@ -194,6 +196,14 @@ async function capturePracticeCoaching(browser, lang) {
     extraSelector: ".chat__messages > .msg:last-child.msg--bot",
   });
   await page.waitForSelector(".msg--coach");
+  // Drop the long practice-intro bubble from the frame so the whole
+  // question -> answer -> coaching -> follow-up arc fits uncut.
+  await page.evaluate(() => {
+    document.querySelector(".chat__messages .msg--bot")?.remove();
+    const messages = document.querySelector("[data-chat-messages]");
+    messages.scrollTop = 0;
+  });
+  await page.waitForTimeout(200);
   await shot(page, lang, "08-practice-coaching.png");
   await page.context().close();
 }

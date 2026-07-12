@@ -26,7 +26,19 @@ Recruiters benefit second: a diligent HR reviewer can pre-screen you by chatting
 
 Fork it, fill in your own JSON, deploy for free (GitHub Pages + Cloudflare Worker free tier + Groq free tier).
 
-## Interview practice mode (hidden)
+## What a recruiter sees
+
+The public site is a two-speed experience for the people deciding whether to interview you:
+
+- **Static mode first** — a deterministic, button-driven tour of your CV (experience, projects, skills) that works with zero backend and never hallucinates, because it isn't generated.
+- **AI mode on demand** — the ✦ icon opens a free-form conversation with an AI that answers *as you*, grounded strictly in your declared résumé + story data. **Every answer carries source badges**, and ✓ badges open a methodology card explaining exactly which published framework the claim comes from.
+- **Honesty as a feature** — ask it "are these assessments certified?" and it says no: structured self-report via an open questionnaire. Recruiters trust what they can audit (see [Trust & methodology](#trust--methodology)).
+
+<p align="center"><img src="docs/screenshots/en/04-ai-conflict-answer.png" alt="AI answer with verified source badges" width="380"></p>
+
+So a diligent recruiter can effectively **pre-screen you by interrogating your career story** — asking the behavioral questions they'd ask in a first call, and getting cited answers.
+
+## Interview practice mode (hidden — this one is for *you*)
 
 Open your deployed site with **`?practice=1`** (optionally `&persona=manager`) and the roles flip: the AI plays an HR screener — or the hiring manager — and runs a soft-skill behavioral interview grounded in *your* résumé and story. After every answer you get a short coaching note covering:
 
@@ -37,7 +49,7 @@ Open your deployed site with **`?practice=1`** (optionally `&persona=manager`) a
 
 Finish any time with the 🏁 chip to get an overall evaluation (2 strengths, 2 growth priorities, a one-sentence hiring signal).
 
-![Practice mode coaching](docs/screenshots/en/08-practice-coaching.png)
+<p align="center"><img src="docs/screenshots/en/08-practice-coaching.png" alt="Practice mode coaching" width="380"></p>
 
 The entrance is deliberately unlinked: visitors and recruiters only ever see the public represent mode. It requires AI mode to be enabled, is protected by the same rate limit and prompt guardrails, and exposes no data the public mode doesn't already send.
 

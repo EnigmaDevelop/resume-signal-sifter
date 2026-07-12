@@ -44,7 +44,9 @@ export function createAiMode({ chat, endpoint, lang, resume, story }) {
       clearTimeout(timer);
 
       if (!res.ok || !res.body) {
-        throw new Error(`AI backend responded with ${res.status}`);
+        const error = new Error(`AI backend responded with ${res.status}`);
+        error.status = res.status;
+        throw error;
       }
 
       const reader = res.body.getReader();

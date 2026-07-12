@@ -13,6 +13,8 @@ export const uiStrings = {
     aiModeGroundingNote:
       "Her cevabım gerçek özgeçmiş ve hikaye verime dayanır; kullandığım kaynaklar cevabın altında rozet olarak görünür. ✓ işaretli rozetler literatüre dayalı öz-değerlendirmelerdir — metodolojiyi görmek için rozete dokunabilirsin.",
     aiModeError: "AI modu şu anda kullanılamıyor, statik moda dönülüyor.",
+    aiModeQuotaError:
+      "Ücretsiz demo kotası şu an dolu — biraz sonra tekrar deneyebilirsin. (Bu açık kaynak bir şablon: fork'layıp kendi anahtarınla sınırsız kullanabilirsin.) Şimdilik statik moda dönüyorum.",
     aiModeHint: "💡 İpucu: sağ üstteki ✦ yıldız simgesine dokunursan benimle serbestçe, kendi kelimelerinle sohbet edebilirsin.",
     practiceBadge: "PROVA",
     practiceStatusText: "Mülakat provası oturumu",
@@ -76,6 +78,8 @@ export const uiStrings = {
     aiModeGroundingNote:
       "Every answer is grounded in my real résumé and story data; the sources appear as badges under each reply. Badges marked ✓ are literature-based self-assessments — tap one to see the methodology.",
     aiModeError: "AI mode is currently unavailable, falling back to static mode.",
+    aiModeQuotaError:
+      "The free demo quota is maxed out right now — please try again a little later. (This is an open-source template: fork it with your own key for unlimited use.) Falling back to static mode for now.",
     aiModeHint: "💡 Tip: tap the ✦ sparkle icon top-right to chat with me freely, in your own words.",
     practiceBadge: "PRACTICE",
     practiceStatusText: "Interview practice session",

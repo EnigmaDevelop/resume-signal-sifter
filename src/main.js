@@ -160,11 +160,12 @@ async function setupPracticeMode({ app, chat, resume, buckets, story, lang, stri
     sendBtn.disabled = !enabled;
   }
 
-  async function fallbackToStatic() {
+  async function fallbackToStatic(error) {
     over = true;
     setInputEnabled(false);
     chat.clearQuickReplies();
-    await chat.addBotMessage(strings.aiModeError);
+    const quotaHit = error?.status === 429;
+    await chat.addBotMessage(quotaHit ? strings.aiModeQuotaError : strings.aiModeError);
     const staticMode = createStaticMode({ chat, resume, buckets, strings });
     await staticMode.start();
   }
@@ -184,7 +185,7 @@ async function setupPracticeMode({ app, chat, resume, buckets, story, lang, stri
     const result = await practice.send(text);
 
     if (!result.ok) {
-      await fallbackToStatic();
+      await fallbackToStatic(result.error);
       return;
     }
 
@@ -216,7 +217,7 @@ async function setupPracticeMode({ app, chat, resume, buckets, story, lang, stri
 
   const result = await practice.start();
   if (!result.ok) {
-    await fallbackToStatic();
+    await fallbackToStatic(result.error);
     return;
   }
 
@@ -279,7 +280,8 @@ function setupAiMode({ app, chat, staticMode, resume, story, lang, strings }) {
     const result = await aiMode.send(text);
 
     if (!result.ok) {
-      await chat.addBotMessage(strings.aiModeError);
+      const quotaHit = result.error?.status === 429;
+      await chat.addBotMessage(quotaHit ? strings.aiModeQuotaError : strings.aiModeError);
       busy = false;
       exitAiMode();
       return;

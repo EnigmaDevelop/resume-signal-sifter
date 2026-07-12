@@ -305,6 +305,11 @@ async function handleChat(request, env, ctx) {
   });
 
   if (!groqRes.ok || !groqRes.body) {
+    // Surface quota/rate-limit exhaustion as 429 so the client can tell
+    // "demo is at capacity" apart from "something is broken".
+    if (groqRes.status === 429) {
+      return new Response("Upstream rate limit reached", { status: 429, headers: cors });
+    }
     return new Response("Upstream LLM error", { status: 502, headers: cors });
   }
 
