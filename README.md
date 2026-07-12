@@ -72,7 +72,28 @@ One picture of the whole idea — an AI answer next to the exact `story.json` li
 
 Logo and favicon prompts for image generation live in [docs/branding.md](docs/branding.md).
 
-> Full setup instructions (fork → fill → deploy) land in a later step. The section below documents the content schema.
+## Get your own (fork → fill → deploy)
+
+1. **Fork** this repo (or "Use this template") and clone it.
+2. **Run locally:** `npm install && npm run dev` — you get the demo persona ("Ada Sifter") in static mode immediately; no keys or backend needed.
+3. **Make it yours:** edit `content/<lang>/resume.json` and `buckets.json` (schema below). Optional but recommended: fill `story.json` with [STORY_GUIDE.md](STORY_GUIDE.md) — it powers the AI mode's depth, the ✓ verified badges, and the practice interviewer. Keep `id`s identical across languages; drop a language by removing it from `config.json`'s `supportedLanguages`.
+4. **Brand it (optional):** replace `public/logo.png` / `public/favicon.svg` and the avatar — prompts and sizes in [docs/branding.md](docs/branding.md).
+5. **Publish:** push to `main`, then in repo Settings → Pages set Source to **GitHub Actions**. The included workflow ([.github/workflows/deploy.yml](.github/workflows/deploy.yml)) builds and deploys automatically; your site appears at `https://<you>.github.io/<repo>/`. The site is fully static at this point.
+6. **Enable AI mode (optional):** deploy the Cloudflare Worker and set your key — 10-minute guide in [worker/README.md](worker/README.md) — then set `content/config.json`:
+   ```json
+   "aiMode": { "enabled": true, "endpoint": "https://<your-worker>.workers.dev" }
+   ```
+   and push. Free on Groq's tier, or [bring your own provider](#ai-budget--bring-your-own-provider).
+7. **Use it:** put the link in your CV ([wording above](#put-it-in-your-cv)), and rehearse with `?practice=1` before real interviews.
+8. **Regenerate marketing screenshots (optional):** `npm run shots` — uses a local mock, spends no tokens.
+
+## Support this project
+
+If Signal Sifter landed you an interview (or just made your CV more fun), you can support it via the **Sponsor** button on GitHub (`.github/FUNDING.yml` — forkers: swap in your own handle or delete the file). Heads-up for creators in Türkiye: GitHub Sponsors pays out to Turkish bank accounts; Buy Me a Coffee currently does **not** support payouts to Türkiye.
+
+---
+
+The section below documents the content schema.
 
 ## Content schema
 

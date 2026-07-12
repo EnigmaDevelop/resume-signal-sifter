@@ -8,7 +8,6 @@ import { uiStrings, resolveInitialLanguage, setStoredLanguage } from "./i18n.js"
 import { iconAiEnter, iconAiExit, iconPracticeExit, iconTheme, iconSend, iconLogo } from "./icons.js";
 
 const THEME_KEY = "signal-sifter-theme";
-const AI_HINT_KEY = "signal-sifter-ai-hint-seen";
 
 function initTheme() {
   const saved = localStorage.getItem(THEME_KEY);
@@ -100,7 +99,10 @@ async function boot(lang, { skipPractice = false } = {}) {
   const params = new URLSearchParams(location.search);
   const practiceActive = !skipPractice && aiModeAvailable && params.get("practice") === "1";
   const persona = params.get("persona") === "manager" ? "manager" : "hr";
-  const showAiHint = !practiceActive && aiModeAvailable && !localStorage.getItem(AI_HINT_KEY);
+  // AI mode is the product's core value — the discovery hint shows on every
+  // load. Most visitors only ever come once; a show-once localStorage gate
+  // (the old behavior) optimized the wrong case and hid the feature.
+  const showAiHint = !practiceActive && aiModeAvailable;
 
   const app = renderShell(resume.profile, strings, lang, aiModeAvailable, showAiHint, practiceActive);
 
@@ -129,7 +131,6 @@ async function boot(lang, { skipPractice = false } = {}) {
 
   if (showAiHint) {
     await chat.addBotMessage(strings.aiModeHint);
-    localStorage.setItem(AI_HINT_KEY, "1");
   }
 }
 

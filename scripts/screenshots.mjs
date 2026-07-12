@@ -58,18 +58,25 @@ function killTree(child, label) {
   }
 }
 
-async function newAppPage(browser, { lang, theme = "light", hintSeen = true, viewport = APP_VIEWPORT }) {
+async function newAppPage(browser, { lang, theme = "light", viewport = APP_VIEWPORT }) {
   const context = await browser.newContext({ viewport, deviceScaleFactor: DEVICE_SCALE });
   await context.addInitScript(
-    ({ lang, theme, hintSeen }) => {
+    ({ lang, theme }) => {
       localStorage.setItem("signal-sifter-lang", lang);
       localStorage.setItem("signal-sifter-theme", theme);
-      if (hintSeen) localStorage.setItem("signal-sifter-ai-hint-seen", "1");
-      else localStorage.removeItem("signal-sifter-ai-hint-seen");
     },
-    { lang, theme, hintSeen },
+    { lang, theme },
   );
   return context.newPage();
+}
+
+// The AI discovery hint (💡 bubble) shows on every load and lands *after* the
+// menu chips — wait for it before interacting so it never interleaves with a
+// conversation mid-capture.
+async function waitForStaticReady(page) {
+  await page.waitForSelector(".chat__quick-replies .chip");
+  await page.waitForSelector("xpath=//div[contains(@class,'msg__bubble') and contains(text(),'💡')]");
+  await page.waitForTimeout(300);
 }
 
 async function shot(page, lang, filename) {
@@ -107,11 +114,14 @@ async function sendAndWait(page, text, { extraSelector, timeout = 20000 } = {}) 
   await page.waitForTimeout(400);
 }
 
+// The fresh menu now includes the always-on AI hint bubble + pulsing sparkle
+// icon (what every visitor actually sees first), so the old separate
+// 03-ai-hint frame is gone.
 async function captureStaticMenu(browser, lang) {
   const page = await newAppPage(browser, { lang, viewport: SHORT_APP_VIEWPORT });
   await page.goto(`${VITE_ORIGIN}/`);
-  await page.waitForSelector(".chat__quick-replies .chip");
-  await page.waitForTimeout(300);
+  await waitForStaticReady(page);
+  await page.waitForSelector("[data-mode-toggle].icon-btn--pulse");
   await shot(page, lang, "01-static-menu.png");
   await page.context().close();
 }
@@ -119,23 +129,13 @@ async function captureStaticMenu(browser, lang) {
 async function captureStaticAnswer(browser, lang) {
   const page = await newAppPage(browser, { lang });
   await page.goto(`${VITE_ORIGIN}/`);
-  await page.waitForSelector(".chat__quick-replies .chip");
+  await waitForStaticReady(page);
   await page.click(".chat__quick-replies .chip >> nth=0");
   await page.waitForSelector(".chat__quick-replies .chip");
   await page.click(".chat__quick-replies .chip >> nth=0");
   await page.waitForSelector(".msg__card");
   await page.waitForTimeout(300);
   await shot(page, lang, "02-static-answer.png");
-  await page.context().close();
-}
-
-async function captureAiHint(browser, lang) {
-  const page = await newAppPage(browser, { lang, hintSeen: false, viewport: SHORT_APP_VIEWPORT });
-  await page.goto(`${VITE_ORIGIN}/`);
-  await page.waitForSelector("xpath=//div[contains(@class,'msg__bubble') and contains(text(),'💡')]");
-  await page.waitForSelector("[data-mode-toggle].icon-btn--pulse");
-  await page.waitForTimeout(300);
-  await shot(page, lang, "03-ai-hint.png");
   await page.context().close();
 }
 
@@ -147,7 +147,7 @@ async function captureAiSequence(browser, lang) {
   const turns = conversations[lang].represent;
 
   await page.goto(`${VITE_ORIGIN}/`);
-  await page.waitForSelector(".chat__quick-replies .chip");
+  await waitForStaticReady(page);
   await page.click("[data-mode-toggle]");
   await page.waitForSelector(".msg__list");
   await page.waitForTimeout(300);
@@ -203,7 +203,7 @@ async function captureDarkTheme(browser, lang) {
   const turns = conversations[lang].represent;
 
   await page.goto(`${VITE_ORIGIN}/`);
-  await page.waitForSelector(".chat__quick-replies .chip");
+  await waitForStaticReady(page);
   await page.click("[data-mode-toggle]");
   await page.waitForSelector(".msg__list");
   await page.waitForTimeout(300);
@@ -273,7 +273,6 @@ async function main() {
       console.log(`\n=== ${lang} ===`);
       await captureStaticMenu(browser, lang);
       await captureStaticAnswer(browser, lang);
-      await captureAiHint(browser, lang);
       await captureAiSequence(browser, lang);
       await captureGroundingProof(browser, lang);
       await capturePracticeCoaching(browser, lang);
