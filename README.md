@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://enigmadevelop.github.io/resume-signal-sifter/"><strong>▶ Live demo</strong></a> ·
-  <a href="#interview-practice-mode-hidden">Practice mode</a> ·
+  <a href="https://enigmadevelop.github.io/resume-signal-sifter/?practice=1"><strong>🎯 Try practice mode live</strong></a> ·
   <a href="#get-your-own-fork--fill--deploy">Get your own</a>
 </p>
 
@@ -12,6 +12,7 @@
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
   <a href="https://github.com/EnigmaDevelop/resume-signal-sifter/actions/workflows/deploy.yml"><img alt="Deploy" src="https://github.com/EnigmaDevelop/resume-signal-sifter/actions/workflows/deploy.yml/badge.svg"></a>
   <a href="CONTRIBUTING.md"><img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"></a>
+  <a href="https://github.com/sponsors/EnigmaDevelop"><img alt="Sponsor" src="https://img.shields.io/badge/%E2%9D%A4-Sponsor-ea4aaa.svg"></a>
 </p>
 
 An interactive, chat-style resume/CV. Visitors browse it like a messaging app in two modes: **static mode** (button-driven, 100% deterministic, no LLM calls) and **AI mode** (a real LLM conversation grounded strictly in your resume + story data, with per-answer source citations). For you, the candidate, there is a third, hidden face: an **interview practice simulator** that interviews you about your own story and coaches every answer.
@@ -38,7 +39,9 @@ The public site is a two-speed experience for the people deciding whether to int
 
 So a diligent recruiter can effectively **pre-screen you by interrogating your career story** — asking the behavioral questions they'd ask in a first call, and getting cited answers.
 
-## Interview practice mode (hidden — this one is for *you*)
+## Interview practice mode (hidden)
+
+This one is for **you**, the candidate — visitors never see it.
 
 Open your deployed site with **`?practice=1`** (optionally `&persona=manager`) and the roles flip: the AI plays an HR screener — or the hiring manager — and runs a soft-skill behavioral interview grounded in *your* résumé and story. After every answer you get a short coaching note covering:
 
@@ -117,7 +120,7 @@ Bug reports, translations, and PRs are welcome — see [CONTRIBUTING.md](CONTRIB
 
 ## Support this project
 
-If Signal Sifter landed you an interview (or just made your CV more fun), you can support it via the **Sponsor** button on GitHub (`.github/FUNDING.yml` — forkers: swap in your own handle or delete the file). Heads-up for creators in Türkiye: GitHub Sponsors pays out to Turkish bank accounts; Buy Me a Coffee currently does **not** support payouts to Türkiye.
+If Signal Sifter landed you an interview (or just made your CV more fun), you can support it with a one-time coffee at **[github.com/sponsors/EnigmaDevelop](https://github.com/sponsors/EnigmaDevelop)** — also reachable via the **Sponsor** button at the top of this repo (`.github/FUNDING.yml` — forkers: swap in your own handle or delete the file). Heads-up for creators in Türkiye: GitHub Sponsors pays out to Turkish bank accounts; Buy Me a Coffee currently does **not** support payouts to Türkiye.
 
 ---
 
