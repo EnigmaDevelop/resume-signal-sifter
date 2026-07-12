@@ -20,5 +20,13 @@ generates themselves with an image model (Flux Pro or similar).
 ## Where generated files go
 
 Generate at 1024×1024 on a white background, then save the chosen result as
-`public/logo.png` (1024×1024) — it's already wired as the favicon fallback and
-general app icon in `index.html`. No other integration step is needed.
+`public/logo.png` — it's already wired as the favicon fallback and general app
+icon in `index.html`. Downscale to ~512×512 before committing so it doesn't
+weigh the deploy down. No other integration step is needed.
+
+## Status (2026-07-12)
+
+Done — both assets were generated with Flux Pro and integrated:
+
+- `public/logo.png` (512×512, flat mark on white) — favicon fallback / app icon.
+- `docs/logo-glow.png` (800×800, glow-on-dark variant) — README hero image.

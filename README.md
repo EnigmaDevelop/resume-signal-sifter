@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/logo-glow.png" alt="Signal Sifter" width="220"></p>
+
 # Signal Sifter
 
 An interactive, chat-style resume/CV. Visitors browse it like a messaging app in two modes: **static mode** (button-driven, 100% deterministic, no LLM calls) and **AI mode** (a real LLM conversation grounded strictly in your resume + story data, with per-answer source citations). For you, the candidate, there is a third, hidden face: an **interview practice simulator** that interviews you about your own story and coaches every answer.
