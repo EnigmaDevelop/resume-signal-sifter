@@ -1,0 +1,12 @@
+{
+  "siteTitle": "Signal Sifter",
+  "defaultLanguage": "tr",
+  "supportedLanguages": ["tr", "en"],
+  "theme": {
+    "default": "system"
+  },
+  "aiMode": {
+    "enabled": false,
+    "endpoint": ""
+  }
+}

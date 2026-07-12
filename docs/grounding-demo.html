@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cevap ↔ Kaynak veri</title>
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --surface: #ffffff;
+    --surface-2: #ebedf1;
+    --border: #e0e2e8;
+    --text: #14161a;
+    --text-muted: #6b7280;
+    --accent: #4f5eff;
+    --accent-soft: #eceeff;
+    --code-bg: #14161a;
+    --code-text: #dfe2ea;
+    --code-muted: #7d8394;
+    --hl-bg: rgba(79, 94, 255, 0.28);
+    --hl-border: #7d8bff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    position: relative;
+    width: 840px;
+    margin: 0 auto;
+    padding: 32px 36px 44px;
+  }
+  h1 {
+    font-size: 1.3rem;
+    margin: 0 0 4px;
+  }
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin: 0 0 24px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  .panel-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  /* Left: chat-bubble mockup, mirrors src/styles.css .msg / .msg__bubble */
+  .chat-mock {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+  }
+  .msg__bubble {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    border-bottom-left-radius: 4px;
+    padding: 12px 14px;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    box-shadow: 0 1px 2px rgba(16, 18, 27, 0.06), 0 1px 1px rgba(16, 18, 27, 0.04);
+  }
+  .msg__source {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .tag-pill {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 3px 11px;
+    font-size: 0.74rem;
+    color: var(--text-muted);
+  }
+  .tag-pill--verified {
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    border-radius: 10px;
+    background: var(--accent-soft);
+  }
+
+  /* Right: code-panel excerpt */
+  .code-panel {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border-radius: 14px;
+    padding: 16px 18px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 0;
+  }
+  .code-panel .path {
+    color: var(--code-muted);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+  }
+  .hl {
+    display: inline-block;
+    background: var(--hl-bg);
+    border-left: 3px solid var(--hl-border);
+    padding: 1px 6px 1px 8px;
+    border-radius: 3px;
+    margin: 1px 0;
+  }
+
+  .connector {
+    position: absolute;
+    inset: 0;
+    width: 840px;
+    height: 100%;
+    pointer-events: none;
+  }
+  .connector path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    stroke-dasharray: 4 4;
+    opacity: 0.75;
+  }
+  .connector circle {
+    fill: var(--accent);
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <h1 data-tr="Cevap ↔ Kaynak veri" data-en="Answer ↔ Source data"></h1>
+    <p class="subtitle" data-tr="AI'nin verdiği cevap, adayın beyan ettiği ham veriden geliyor — uydurma değil." data-en="The AI's answer traces directly back to the candidate's own declared data — not a fabrication."></p>
+
+    <div class="grid">
+      <div class="left">
+        <div class="panel-label" data-tr="SOHBET · AI CEVABI" data-en="CHAT · AI ANSWER"></div>
+        <div class="chat-mock">
+          <div class="msg__bubble" data-tr-html="tr-answer" data-en-html="en-answer"></div>
+          <div class="msg__source">
+            <span class="tag-pill tag-pill--verified" id="badge-verified" data-tr="✓ Doğrulanmış öz-değerlendirme: Çatışma Tarzı" data-en="✓ Verified self-assessment: Conflict Style"></span>
+            <span class="tag-pill" data-tr="📖 Deneyim hikayesi" data-en="📖 Experience story"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="panel-label" data-tr="KAYNAK · STORY.JSON" data-en="SOURCE · STORY.JSON"></div>
+        <pre class="code-panel" id="code-panel"><span class="path">content/&lt;lang&gt;/story.json</span><code data-tr-html="tr-code" data-en-html="en-code"></code></pre>
+      </div>
+    </div>
+
+    <svg class="connector" id="connector"><path id="connector-path" d="" /><circle id="connector-dot-a" r="3.5" /><circle id="connector-dot-b" r="3.5" /></svg>
+  </div>
+
+  <template id="tr-answer">Anlaşmazlıkları “kim haklı” tartışmasından çıkarıp “veri ne gösteriyor” sorusuna çevirmeye çalışırım. Güzel bir örneğini geçtiğimiz yıl yaşadık: monolit mimariyi mikroservislere bölme kararını tartışırken bir arkadaşım bunun erken bir optimizasyon olacağını, önce iç mimariyi sadeleştirmemiz gerektiğini düşünüyordu. Tartışmayı uzatmak yerine birlikte kısa bir karar dokümanı yazdık; hangi ölçütlerin hangi yaklaşımı desteklediğini net biçimde ortaya koyduk ve bir haftalık zaman kutusuyla küçük bir kanıt-konsepti denemesi yaptık. Deneme, geçişin doğru yönde olduğunu ama daha kademeli ilerlemesi gerektiğini gösterdi; karar, dayatılmış değil ekip tarafından ortaklaşa sahiplenilmiş bir karara dönüştü. Genel olarak çatışma tarzım da buna benzer: işbirlikçi bir yaklaşımı tercih ederim, zaman baskısı olduğunda uzlaşmaya da açığım.</template>
+
+  <template id="en-answer">I try to move disagreements away from “who's right” and toward “what does the data say.” A good example: when we were deciding whether to split our monolith into microservices, a teammate felt it was premature and that we should simplify the internal architecture first. Instead of arguing it out, we wrote a short decision doc together listing which metrics and scenarios would favor each approach, and ran a one-week timeboxed proof of concept to test them. The experiment showed the migration was the right direction, but that it should happen more gradually — the decision ended up being owned by the whole team rather than imposed by me. That's pretty consistent with how I generally operate: I lean collaborative, with some compromise when time is tight.</template>
+
+  <template id="tr-code">{
+  "selfAssessments": [
+    {
+      "instrument": "conflictStyle",
+<span class="hl">      "primary": "Collaborating",</span>
+<span class="hl">      "secondary": "Compromising",</span>
+      "note": "Anlaşmazlıkları 'kim haklı'
+        yerine 'hangi veri neyi
+        gösteriyor' çerçevesinde
+        çözmeyi tercih ederim."
+    }
+  ],
+  "behavioralStories": [
+    {
+      "theme": "conflict",
+      "situation": "Mikroservise geçiş
+        kararında bir arkadaşım bunun
+        erken bir optimizasyon
+        olduğunu düşünüyordu.",
+<span class="hl">      "action": "Tartışmayı 'kim haklı'
+        çerçevesinden çıkarıp ölçütleri
+        birlikte yazdığımız kısa bir
+        karar dokümanına döktük; bir
+        haftalık zaman kutusuyla
+        kanıt-konsepti denemesi yaptık.",</span>
+      "result": "Geçiş doğru yönde ama
+        kademeli olmalıydı; karar
+        ekipçe sahiplenildi."
+    }
+  ]
+}</template>
+
+  <template id="en-code">{
+  "selfAssessments": [
+    {
+      "instrument": "conflictStyle",
+<span class="hl">      "primary": "Collaborating",</span>
+<span class="hl">      "secondary": "Compromising",</span>
+      "note": "I prefer resolving
+        disagreements around 'what does
+        the data say' rather than
+        'who's right'."
+    }
+  ],
+  "behavioralStories": [
+    {
+      "theme": "conflict",
+      "situation": "During the move to
+        microservices, a teammate felt
+        further splitting the monolith
+        was premature optimization.",
+<span class="hl">      "action": "I reframed the debate
+        away from 'who's right' into a
+        short decision doc listing the
+        metrics; we ran a one-week
+        timeboxed proof of concept.",</span>
+      "result": "Right direction, but
+        more gradual; the team owned
+        the final decision."
+    }
+  ]
+}</template>
+
+<script>
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var lang = params.get("lang") === "en" ? "en" : "tr";
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-" + lang + "]").forEach(function (el) {
+      el.textContent = el.getAttribute("data-" + lang);
+    });
+
+    function fillHtml(attr, targetId) {
+      document.querySelectorAll("[" + attr + "]").forEach(function (el) {
+        var refId = el.getAttribute(attr);
+        var tpl = document.getElementById(refId);
+        if (tpl) el.innerHTML = tpl.innerHTML;
+      });
+    }
+    fillHtml("data-" + lang + "-html");
+
+    document.title = lang === "en" ? "Answer ↔ Source data" : "Cevap ↔ Kaynak veri";
+
+    function drawConnector() {
+      var badge = document.getElementById("badge-verified");
+      var hl = document.querySelector(".code-panel .hl");
+      var svg = document.getElementById("connector");
+      var path = document.getElementById("connector-path");
+      var dotA = document.getElementById("connector-dot-a");
+      var dotB = document.getElementById("connector-dot-b");
+      if (!badge || !hl || !svg) return;
+
+      var pageRect = document.querySelector(".page").getBoundingClientRect();
+      var bRect = badge.getBoundingClientRect();
+      var hRect = hl.getBoundingClientRect();
+
+      var ax = bRect.right - pageRect.left;
+      var ay = bRect.top + bRect.height / 2 - pageRect.top;
+      var bx = hRect.left - pageRect.left;
+      var by = hRect.top + hRect.height / 2 - pageRect.top;
+
+      var midX = (ax + bx) / 2;
+      path.setAttribute("d", "M " + ax + " " + ay + " C " + midX + " " + ay + ", " + midX + " " + by + ", " + bx + " " + by);
+      dotA.setAttribute("cx", ax);
+      dotA.setAttribute("cy", ay);
+      dotB.setAttribute("cx", bx);
+      dotB.setAttribute("cy", by);
+    }
+
+    window.addEventListener("load", drawConnector);
+    // Fonts/layout can shift slightly after first paint; redraw once more.
+    setTimeout(drawConnector, 60);
+  })();
+</script>
+</body>
+</html>

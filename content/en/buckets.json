@@ -1,0 +1,108 @@
+{
+  "menu": {
+    "title": "What would you like to know?",
+    "categories": [
+      { "id": "experience", "label": "Experience", "icon": "💼" },
+      { "id": "projects", "label": "Projects", "icon": "🚀" },
+      { "id": "skills", "label": "Skills", "icon": "🛠️" },
+      { "id": "education", "label": "Education", "icon": "🎓" },
+      { "id": "contact", "label": "Contact", "icon": "✉️" }
+    ]
+  },
+  "categories": {
+    "experience": {
+      "label": "Experience",
+      "intro": "Which experience are you curious about?",
+      "questions": [
+        {
+          "id": "exp-current",
+          "label": "What's your current role?",
+          "answer": [
+            { "type": "text", "text": "I'm a Senior Software Engineer at Nova Software (2022 - present)." },
+            { "type": "experience", "refs": ["exp-nova"] }
+          ]
+        },
+        {
+          "id": "exp-previous",
+          "label": "What was your previous job?",
+          "answer": [
+            { "type": "text", "text": "I previously worked at Kaydeta Technology." },
+            { "type": "experience", "refs": ["exp-kaydeta"] }
+          ]
+        },
+        {
+          "id": "exp-all",
+          "label": "Show all your experience",
+          "answer": [{ "type": "experience" }]
+        }
+      ]
+    },
+    "projects": {
+      "label": "Projects",
+      "intro": "Which project would you like to explore?",
+      "questions": [
+        {
+          "id": "proj-signal-sifter",
+          "label": "What is Signal Sifter?",
+          "answer": [{ "type": "project", "ref": "proj-signal-sifter" }]
+        },
+        {
+          "id": "proj-devportal",
+          "label": "What is the Internal Developer Portal?",
+          "answer": [{ "type": "project", "ref": "proj-devportal" }]
+        },
+        {
+          "id": "proj-all",
+          "label": "Show all your projects",
+          "answer": [{ "type": "projects" }]
+        }
+      ]
+    },
+    "skills": {
+      "label": "Skills",
+      "intro": "Which area's skills are you curious about?",
+      "questions": [
+        {
+          "id": "skills-backend",
+          "label": "What are your backend skills?",
+          "answer": [{ "type": "skills", "refs": ["Backend"] }]
+        },
+        {
+          "id": "skills-frontend",
+          "label": "What are your frontend skills?",
+          "answer": [{ "type": "skills", "refs": ["Frontend"] }]
+        },
+        {
+          "id": "skills-all",
+          "label": "Show all your skills",
+          "answer": [{ "type": "skills" }]
+        }
+      ]
+    },
+    "education": {
+      "label": "Education",
+      "intro": "What would you like to know about my education?",
+      "questions": [
+        {
+          "id": "edu-main",
+          "label": "Where did you study?",
+          "answer": [{ "type": "education" }]
+        }
+      ]
+    },
+    "contact": {
+      "label": "Contact",
+      "intro": "How can you get in touch with me?",
+      "questions": [
+        {
+          "id": "contact-links",
+          "label": "What are your contact details?",
+          "answer": [
+            { "type": "text", "text": "You can reach me through the following channels:" },
+            { "type": "links" }
+          ]
+        }
+      ]
+    }
+  }
+}

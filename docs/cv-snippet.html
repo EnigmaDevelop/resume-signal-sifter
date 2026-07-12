@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CV snippet — interactive résumé link placement</title>
+<style>
+  :root {
+    --ink: #1c1e22;
+    --muted: #5b6270;
+    --rule: #d8dae0;
+    --accent: #4f5eff;
+    --accent-soft: #eef0ff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #e9eaee;
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    color: var(--ink);
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+  }
+  .page {
+    width: 820px;
+    background: #ffffff;
+    box-shadow: 0 2px 14px rgba(20, 22, 30, 0.12);
+    padding: 44px 52px;
+  }
+  .name {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 4px;
+    letter-spacing: 0.01em;
+  }
+  .title {
+    font-size: 1.02rem;
+    color: var(--muted);
+    margin: 0 0 10px;
+    font-weight: 500;
+  }
+  .contact {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin: 0 0 20px;
+    letter-spacing: 0.01em;
+  }
+  .contact span:not(:last-child)::after {
+    content: "  ·  ";
+    color: var(--rule);
+  }
+  hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 0 0 18px;
+  }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 8px;
+  }
+  .summary {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin: 0 0 18px;
+    max-width: 680px;
+  }
+  .link-line {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--accent-soft);
+    border: 1px solid #d7dbff;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 0.87rem;
+    line-height: 1.55;
+    color: #1f2a5c;
+  }
+  .link-line svg {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    color: var(--accent);
+  }
+  .link-line strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="name">Ada Sifter</div>
+    <div class="title" data-tr="Full-Stack Yazılım Mühendisi" data-en="Full-Stack Software Engineer"></div>
+    <div class="contact">
+      <span>adasifter@example.com</span>
+      <span data-tr="İstanbul, Türkiye" data-en="Istanbul, Turkey"></span>
+      <span>linkedin.com/in/example</span>
+      <span>github.com/example</span>
+    </div>
+    <hr />
+
+    <div class="section-label" data-tr="ÖZET" data-en="SUMMARY"></div>
+    <p class="summary" data-tr="tr-summary" data-en="en-summary" data-fill="text"></p>
+
+    <div class="link-line">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3.5" y="4.5" width="17" height="12" rx="3"/>
+        <path d="M8 16.5 L8 20 L11.5 16.5"/>
+        <line x1="7.5" y1="8.5" x2="16.5" y2="8.5"/>
+        <line x1="7.5" y1="11.5" x2="13.5" y2="11.5"/>
+      </svg>
+      <span data-tr="tr-link" data-en="en-link" data-fill="text"></span>
+    </div>
+  </div>
+
+  <template id="tr-summary">Ölçeklenebilir web uygulamaları ve geliştirici araçları üzerine 6 yıllık deneyime sahip full-stack yazılım mühendisiyim. Mikroservis mimarisine geçişi yönetip 5 kişilik bir ekibe teknik liderlik yaptım; dahili geliştirici portalını sıfırdan tasarlayıp devreye aldım.</template>
+  <template id="en-summary">Full-stack software engineer with 6 years of experience building scalable web applications and developer tools. I led a migration to microservices architecture, provided technical leadership for a 5-person team, and designed and shipped an internal developer portal from scratch.</template>
+
+  <template id="tr-link"><strong>İnteraktif özgeçmiş:</strong> kariyer hikayem, somut proje kanıtlarım ve literatüre dayalı öz-değerlendirme sonuçlarımla temellendirilmiş yapay zekâyla sohbet edin — bana soracaklarınızı ona sorun: adasifter.github.io/cv</template>
+  <template id="en-link"><strong>Interactive résumé:</strong> chat with an AI grounded in my full career story, real project evidence, and literature-based self-assessments — ask it what you'd ask me: adasifter.github.io/cv</template>
+
+<script>
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var lang = params.get("lang") === "en" ? "en" : "tr";
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-" + lang + "]").forEach(function (el) {
+      if (el.hasAttribute("data-fill")) {
+        var tpl = document.getElementById(el.getAttribute("data-" + lang));
+        if (tpl) el.innerHTML = tpl.innerHTML;
+      } else {
+        el.textContent = el.getAttribute("data-" + lang);
+      }
+    });
+
+    document.title = lang === "en"
+      ? "CV snippet — interactive résumé link placement"
+      : "CV snippet — interaktif özgeçmiş link yerleşimi";
+  })();
+</script>
+</body>
+</html>

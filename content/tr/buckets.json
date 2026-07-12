@@ -1,0 +1,108 @@
+{
+  "menu": {
+    "title": "Ne öğrenmek istersin?",
+    "categories": [
+      { "id": "experience", "label": "Deneyim", "icon": "💼" },
+      { "id": "projects", "label": "Projeler", "icon": "🚀" },
+      { "id": "skills", "label": "Yetenekler", "icon": "🛠️" },
+      { "id": "education", "label": "Eğitim", "icon": "🎓" },
+      { "id": "contact", "label": "İletişim", "icon": "✉️" }
+    ]
+  },
+  "categories": {
+    "experience": {
+      "label": "Deneyim",
+      "intro": "Hangi deneyimimi merak ediyorsun?",
+      "questions": [
+        {
+          "id": "exp-current",
+          "label": "Şu anki rolün ne?",
+          "answer": [
+            { "type": "text", "text": "Nova Yazılım'da Kıdemli Yazılım Mühendisi olarak çalışıyorum (2022 - günümüz)." },
+            { "type": "experience", "refs": ["exp-nova"] }
+          ]
+        },
+        {
+          "id": "exp-previous",
+          "label": "Önceki iş deneyimin neydi?",
+          "answer": [
+            { "type": "text", "text": "Daha önce Kaydeta Teknoloji'de çalıştım." },
+            { "type": "experience", "refs": ["exp-kaydeta"] }
+          ]
+        },
+        {
+          "id": "exp-all",
+          "label": "Tüm deneyimlerini göster",
+          "answer": [{ "type": "experience" }]
+        }
+      ]
+    },
+    "projects": {
+      "label": "Projeler",
+      "intro": "Hangi projemi incelemek istersin?",
+      "questions": [
+        {
+          "id": "proj-signal-sifter",
+          "label": "Signal Sifter nedir?",
+          "answer": [{ "type": "project", "ref": "proj-signal-sifter" }]
+        },
+        {
+          "id": "proj-devportal",
+          "label": "Dahili Geliştirici Portalı nedir?",
+          "answer": [{ "type": "project", "ref": "proj-devportal" }]
+        },
+        {
+          "id": "proj-all",
+          "label": "Tüm projelerini göster",
+          "answer": [{ "type": "projects" }]
+        }
+      ]
+    },
+    "skills": {
+      "label": "Yetenekler",
+      "intro": "Hangi alanda yeteneklerimi merak ediyorsun?",
+      "questions": [
+        {
+          "id": "skills-backend",
+          "label": "Backend yeteneklerin neler?",
+          "answer": [{ "type": "skills", "refs": ["Backend"] }]
+        },
+        {
+          "id": "skills-frontend",
+          "label": "Frontend yeteneklerin neler?",
+          "answer": [{ "type": "skills", "refs": ["Frontend"] }]
+        },
+        {
+          "id": "skills-all",
+          "label": "Tüm yeteneklerini göster",
+          "answer": [{ "type": "skills" }]
+        }
+      ]
+    },
+    "education": {
+      "label": "Eğitim",
+      "intro": "Eğitim geçmişim hakkında ne öğrenmek istersin?",
+      "questions": [
+        {
+          "id": "edu-main",
+          "label": "Nerede okudun?",
+          "answer": [{ "type": "education" }]
+        }
+      ]
+    },
+    "contact": {
+      "label": "İletişim",
+      "intro": "Benimle nasıl iletişime geçebilirsin?",
+      "questions": [
+        {
+          "id": "contact-links",
+          "label": "İletişim bilgilerin neler?",
+          "answer": [
+            { "type": "text", "text": "Aşağıdaki kanallardan bana ulaşabilirsin:" },
+            { "type": "links" }
+          ]
+        }
+      ]
+    }
+  }
+}

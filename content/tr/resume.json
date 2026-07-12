@@ -1,0 +1,81 @@
+{
+  "profile": {
+    "name": "Ada Sifter",
+    "title": "Full-Stack Yazılım Mühendisi",
+    "avatar": null,
+    "location": "İstanbul, Türkiye",
+    "statusText": "çevrimiçi",
+    "summary": "6 yıllık deneyime sahip, ölçeklenebilir web uygulamaları ve geliştirici araçları üzerine çalışan bir mühendisim. Bu bir şablon/demo persona — kendi bilgilerinizle değiştirin.",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/example" },
+      { "label": "LinkedIn", "url": "https://linkedin.com/in/example" },
+      { "label": "E-posta", "url": "mailto:example@example.com" }
+    ]
+  },
+  "experience": [
+    {
+      "id": "exp-nova",
+      "company": "Nova Yazılım",
+      "role": "Kıdemli Yazılım Mühendisi",
+      "start": "2022-03",
+      "end": "present",
+      "location": "İstanbul (uzaktan)",
+      "highlights": [
+        "Mikroservis mimarisine geçişi yönetti, ortalama yanıt süresini %40 azalttı.",
+        "5 kişilik bir ekibe teknik liderlik yaptı, kod inceleme sürecini standardize etti.",
+        "Dahili geliştirici portalını sıfırdan tasarlayıp devreye aldı."
+      ]
+    },
+    {
+      "id": "exp-kaydeta",
+      "company": "Kaydeta Teknoloji",
+      "role": "Yazılım Mühendisi",
+      "start": "2019-06",
+      "end": "2022-02",
+      "location": "Ankara",
+      "highlights": [
+        "E-ticaret platformunun ödeme akışını yeniden yazdı, işlem hata oranını %60 düşürdü.",
+        "CI/CD pipeline'ını kurarak deploy süresini 40 dakikadan 6 dakikaya indirdi."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-signal-sifter",
+      "name": "Signal Sifter",
+      "description": "Statik ve AI destekli sohbet modlarına sahip, JSON ile beslenen açık kaynak interaktif özgeçmiş şablonu.",
+      "url": "https://github.com/example/resume-signal-sifter",
+      "tags": ["Vite", "Vanilla JS", "Cloudflare Workers", "Groq"]
+    },
+    {
+      "id": "proj-devportal",
+      "name": "Dahili Geliştirici Portalı",
+      "description": "Servis kataloğu, dokümantasyon arama ve deploy geçmişini tek yerde toplayan iç araç.",
+      "url": "",
+      "tags": ["React", "Node.js", "PostgreSQL"]
+    }
+  ],
+  "education": [
+    {
+      "school": "Örnek Teknik Üniversitesi",
+      "degree": "Lisans",
+      "field": "Bilgisayar Mühendisliği",
+      "start": "2015",
+      "end": "2019"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Backend",
+      "items": ["Node.js", "Python", "PostgreSQL", "Redis"]
+    },
+    {
+      "category": "Frontend",
+      "items": ["JavaScript", "React", "Vite", "CSS"]
+    },
+    {
+      "category": "Altyapı",
+      "items": ["Docker", "GitHub Actions", "Cloudflare Workers"]
+    }
+  ]
+}

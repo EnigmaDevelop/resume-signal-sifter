@@ -1,0 +1,74 @@
+{
+  "motivation": "Yazılımı seçmemin nedeni, küçük bir çözümün binlerce kişinin işini kolaylaştırabildiğini görmekten aldığım tatmin. Üniversitede bir öğrenci kulübü için yazdığım basit bir üyelik takip aracının, sonradan gerçek bir ihtiyacı çözdüğünü görmek beni bu alanda derinleşmeye itti.",
+  "values": [
+    "Şeffaflık — kararların gerekçesini ekiple paylaşmak",
+    "Sürekli öğrenme — her projeden çıkarılacak bir ders olduğuna inanmak",
+    "Sürdürülebilir hız — hızlı ilerlemek kadar yorulmadan ilerlemek de önemli"
+  ],
+  "workStyle": "Belirsizliği erken netleştirmeyi, küçük ve sık teslimatlarla geri bildirim almayı tercih ederim. Bire bir kod yazmak kadar, ekip arkadaşlarımın takıldığı yerlerde onlarla birlikte düşünmekten de keyif alırım.",
+  "careerGoals": "Önümüzdeki 3-5 yılda, teknik derinliğimi kaybetmeden daha büyük bir mühendislik organizasyonuna yön veren bir rol (örn. mühendislik müdürü veya kıdemli personel mühendis) hedefliyorum. Özellikle geliştirici deneyimini iyileştiren araçlar üzerinde çalışmaya devam etmek istiyorum.",
+  "strengths": [
+    "Karmaşık teknik konuları farklı seviyelerdeki paydaşlara anlaşılır şekilde anlatabilme",
+    "Belirsiz problemleri küçük, test edilebilir adımlara bölme",
+    "Kriz anında sakin kalıp önceliklendirme yapabilme"
+  ],
+  "growthAreas": [
+    "Delegasyon — bazen kendim yapmak yerine daha erken devretmeyi öğreniyorum",
+    "Yazılı dokümantasyonu koddan önce önceliklendirmek"
+  ],
+  "selfAssessments": [
+    {
+      "instrument": "teamRole",
+      "primary": "Coordinator",
+      "secondary": "Plant",
+      "note": "Ekipte hedefleri netleştirip işi doğru kişilere dağıtmaktan, aynı zamanda zaman zaman alışılmadık bir çözüm önermekten keyif alırım."
+    },
+    {
+      "instrument": "conflictStyle",
+      "primary": "Collaborating",
+      "secondary": "Compromising",
+      "note": "Anlaşmazlıkları 'kim haklı' yerine 'hangi veri neyi gösteriyor' çerçevesinde çözmeyi tercih ederim."
+    },
+    {
+      "instrument": "motivationDrivers",
+      "primary": "Mastery",
+      "secondary": "Autonomy"
+    },
+    {
+      "instrument": "personalitySnapshot",
+      "openness": "high",
+      "conscientiousness": "high",
+      "extraversion": "medium",
+      "agreeableness": "high",
+      "emotionalStability": "high"
+    },
+    {
+      "instrument": "leadershipStyle",
+      "primary": "Coaching",
+      "secondary": "Democratic",
+      "note": "Ekip üyelerinin kendi çözümlerine ulaşmasına alan açmayı, kararları mümkün olduğunca ekiple birlikte almayı tercih ederim."
+    }
+  ],
+  "behavioralStories": [
+    {
+      "theme": "challenge",
+      "situation": "Nova Yazılım'da 5 kişilik bir ekibe teknik lider olarak atandığımda, kod inceleme süreci kişiden kişiye çok farklı işliyordu; bazı PR'lar günlerce beklerken bazıları neredeyse hiç incelenmeden geçiyordu.",
+      "task": "Ekibin tutarlı bir kod kalitesi standardına ulaşmasını sağlamak ve bunu inceleme sürecini yavaşlatmadan yapmak benim sorumluluğumdaydı.",
+      "action": "Ekiple birlikte kısa bir kod inceleme checklist'i oluşturdum, otomatik lint/test kontrollerini PR sürecine entegre ederek insan incelemesini biçimsel konulardan kurtardım ve haftalık 15 dakikalık bir 'inceleme kalibrasyonu' toplantısı başlattım ki herkes aynı standarttan ne anladığını hizalasın.",
+      "result": "Üç ay içinde ortalama PR inceleme süresi %35 kısaldı, üretime kaçan hata sayısı belirgin şekilde azaldı ve ekip üyeleri sürecin artık daha adil ve öngörülebilir olduğunu belirtti."
+    },
+    {
+      "theme": "conflict",
+      "situation": "Mikroservis mimarisine geçiş kararı alınırken, ekipteki bir arkadaşım mevcut monolitin daha da parçalanmasının erken bir optimizasyon olacağını, önce iç mimarinin sadeleştirilmesi gerektiğini düşünüyordu.",
+      "task": "Hem teknik olarak doğru kararı vermek hem de ekip içindeki güveni zedelemeden bu görüş ayrılığını çözmek gerekiyordu.",
+      "action": "Tartışmayı 'kim haklı' çerçevesinden çıkarıp, iki yaklaşımın da hangi ölçüm ve senaryoda daha iyi sonuç vereceğini birlikte yazdığımız kısa bir karar dokümanına döktük; iki taraf da varsayımlarını açıkça belirtti ve bir haftalık zaman kutusuyla küçük bir kanıt-konsepti denemesi yaptık.",
+      "result": "Deneme, geçişin doğru yönde olduğunu ama daha kademeli yapılması gerektiğini gösterdi; arkadaşımın endişesi geçiş planına kademeli bir yol haritası olarak dahil edildi ve karar ekip tarafından ortak bir karar olarak sahiplenildi."
+    }
+  ],
+  "aiIntroTopics": [
+    "Deneyimlerim ve projelerim",
+    "Liderlik tarzım ve çalışma yaklaşımım",
+    "Kariyer hedeflerim ve motivasyonum",
+    "Karşılaştığım zorluklar ve nasıl çözdüğüm"
+  ]
+}

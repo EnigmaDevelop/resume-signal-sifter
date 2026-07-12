@@ -1,0 +1,81 @@
+{
+  "profile": {
+    "name": "Ada Sifter",
+    "title": "Full-Stack Software Engineer",
+    "avatar": null,
+    "location": "Istanbul, Turkey",
+    "statusText": "online",
+    "summary": "Software engineer with 6 years of experience building scalable web applications and developer tools. This is a template/demo persona — replace it with your own information.",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/example" },
+      { "label": "LinkedIn", "url": "https://linkedin.com/in/example" },
+      { "label": "Email", "url": "mailto:example@example.com" }
+    ]
+  },
+  "experience": [
+    {
+      "id": "exp-nova",
+      "company": "Nova Software",
+      "role": "Senior Software Engineer",
+      "start": "2022-03",
+      "end": "present",
+      "location": "Istanbul (remote)",
+      "highlights": [
+        "Led the migration to a microservices architecture, cutting average response time by 40%.",
+        "Provided technical leadership for a team of 5 and standardized the code review process.",
+        "Designed and shipped the internal developer portal from scratch."
+      ]
+    },
+    {
+      "id": "exp-kaydeta",
+      "company": "Kaydeta Technology",
+      "role": "Software Engineer",
+      "start": "2019-06",
+      "end": "2022-02",
+      "location": "Ankara",
+      "highlights": [
+        "Rewrote the e-commerce platform's checkout flow, reducing transaction errors by 60%.",
+        "Built a CI/CD pipeline that cut deploy time from 40 minutes to 6 minutes."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-signal-sifter",
+      "name": "Signal Sifter",
+      "description": "An open-source interactive resume template with static and AI-powered chat modes, driven entirely by JSON.",
+      "url": "https://github.com/example/resume-signal-sifter",
+      "tags": ["Vite", "Vanilla JS", "Cloudflare Workers", "Groq"]
+    },
+    {
+      "id": "proj-devportal",
+      "name": "Internal Developer Portal",
+      "description": "An internal tool unifying the service catalog, docs search, and deploy history in one place.",
+      "url": "",
+      "tags": ["React", "Node.js", "PostgreSQL"]
+    }
+  ],
+  "education": [
+    {
+      "school": "Example Technical University",
+      "degree": "Bachelor's",
+      "field": "Computer Engineering",
+      "start": "2015",
+      "end": "2019"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Backend",
+      "items": ["Node.js", "Python", "PostgreSQL", "Redis"]
+    },
+    {
+      "category": "Frontend",
+      "items": ["JavaScript", "React", "Vite", "CSS"]
+    },
+    {
+      "category": "Infrastructure",
+      "items": ["Docker", "GitHub Actions", "Cloudflare Workers"]
+    }
+  ]
+}

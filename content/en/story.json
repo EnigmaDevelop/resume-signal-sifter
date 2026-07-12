@@ -1,0 +1,74 @@
+{
+  "motivation": "I chose software because of the satisfaction of watching a small solution make thousands of people's work easier. A simple membership-tracking tool I wrote for a student club in university ended up solving a real, recurring problem — that's what pulled me deeper into this field.",
+  "values": [
+    "Transparency — sharing the reasoning behind decisions with the team",
+    "Continuous learning — every project has a lesson worth extracting",
+    "Sustainable pace — moving fast matters, but moving without burning out matters more"
+  ],
+  "workStyle": "I prefer clarifying ambiguity early and shipping small, frequent increments to get feedback fast. I enjoy thinking through a teammate's blocker with them almost as much as writing code myself.",
+  "careerGoals": "Over the next 3-5 years I'm aiming for a role that shapes a larger engineering organization without losing technical depth — think engineering manager or senior staff engineer. I want to keep working on tools that improve developer experience.",
+  "strengths": [
+    "Explaining complex technical topics clearly to stakeholders at different levels",
+    "Breaking ambiguous problems into small, testable steps",
+    "Staying calm and prioritizing well under pressure"
+  ],
+  "growthAreas": [
+    "Delegation — learning to hand things off earlier instead of doing them myself",
+    "Prioritizing written documentation before diving into code"
+  ],
+  "selfAssessments": [
+    {
+      "instrument": "teamRole",
+      "primary": "Coordinator",
+      "secondary": "Plant",
+      "note": "I enjoy clarifying goals and routing work to the right people, while occasionally throwing in an unconventional idea."
+    },
+    {
+      "instrument": "conflictStyle",
+      "primary": "Collaborating",
+      "secondary": "Compromising",
+      "note": "I prefer resolving disagreements around 'what does the data say' rather than 'who's right'."
+    },
+    {
+      "instrument": "motivationDrivers",
+      "primary": "Mastery",
+      "secondary": "Autonomy"
+    },
+    {
+      "instrument": "personalitySnapshot",
+      "openness": "high",
+      "conscientiousness": "high",
+      "extraversion": "medium",
+      "agreeableness": "high",
+      "emotionalStability": "high"
+    },
+    {
+      "instrument": "leadershipStyle",
+      "primary": "Coaching",
+      "secondary": "Democratic",
+      "note": "I prefer giving teammates room to reach their own solutions and making decisions with the team wherever possible."
+    }
+  ],
+  "behavioralStories": [
+    {
+      "theme": "challenge",
+      "situation": "When I became tech lead for a 5-person team at Nova Software, the code review process varied wildly by person — some PRs sat for days while others were barely reviewed at all.",
+      "task": "I was responsible for getting the team to a consistent quality bar without slowing the review process down.",
+      "action": "I worked with the team to write a short code review checklist, wired automated lint/test checks into the PR pipeline to take formatting nitpicks off human reviewers' plates, and started a 15-minute weekly 'review calibration' session so everyone aligned on what the standard actually meant in practice.",
+      "result": "Within three months, average PR review time dropped by 35%, the number of bugs reaching production noticeably decreased, and the team reported the process now felt fair and predictable."
+    },
+    {
+      "theme": "conflict",
+      "situation": "During the decision to move to a microservices architecture, a teammate felt further splitting the existing monolith was premature optimization and that the internal architecture should be simplified first instead.",
+      "task": "I needed to reach the technically right call while keeping trust intact within the team.",
+      "action": "I reframed the discussion away from 'who's right' and into a short decision doc listing which metrics and scenarios would favor each approach; both sides stated their assumptions explicitly, and we ran a one-week timeboxed proof of concept to test them.",
+      "result": "The experiment confirmed the migration was the right direction but should happen more gradually; my teammate's concern was folded into the migration plan as a phased roadmap, and the decision ended up being owned by the whole team rather than imposed."
+    }
+  ],
+  "aiIntroTopics": [
+    "My experience and projects",
+    "My leadership style and how I work",
+    "My career goals and motivation",
+    "Challenges I've faced and how I handled them"
+  ]
+}
