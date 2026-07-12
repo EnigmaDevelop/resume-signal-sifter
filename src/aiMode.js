@@ -5,8 +5,11 @@ const STALL_TIMEOUT_MS = 15_000;
 // §SRC:key1,key2§ citation header before the human-readable text (see
 // buildSystemPrompt() in worker/src/index.js). We buffer the start of the
 // stream until we can match/strip it, so it never flashes on screen.
-const SOURCE_HEADER_RE = /^§SRC:([^§]*)§\n*/;
-const SOURCE_HEADER_MAX_WAIT = 120;
+// The "SRC:" prefix is optional in the match: the model occasionally drops
+// it and emits just §key1,key2§ — still unambiguously the header, and
+// unknown keys are filtered out downstream by sourceBadgeInfo() anyway.
+const SOURCE_HEADER_RE = /^§(?:SRC:)?([^§\n]{0,160})§\n*/;
+const SOURCE_HEADER_MAX_WAIT = 170;
 
 /**
  * Talks to the Cloudflare Worker proxy. Request contract:

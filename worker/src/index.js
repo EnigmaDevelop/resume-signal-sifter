@@ -122,7 +122,9 @@ Before your reply text, on its own first line, you MUST output a citation header
 §SRC:key1,key2§
 followed by a newline, then your normal reply text. Pick every key from this closed list only — never invent a key that isn't here:
 ${sourceKeyList.map((k) => `- ${k}`).join("\n")}
-List every key whose data you actually drew on for this specific reply, comma-separated, no spaces. Use "none" alone if the reply isn't grounded in any specific field (greetings, small talk, declining an off-topic question). This header is not new information — it's just an accurate self-citation of which of the data already given to you above you used, so the visitor can see the answer is grounded rather than invented. Never omit this header, and never add any other text before it.`;
+List every key whose data you actually drew on for this specific reply, comma-separated, no spaces. Use "none" alone if the reply isn't grounded in any specific field (greetings, small talk, declining an off-topic question). This header is not new information — it's just an accurate self-citation of which of the data already given to you above you used, so the visitor can see the answer is grounded rather than invented. Never omit this header, and never add any other text before it. The header must start with the literal characters "§SRC:" — never shorten it to a bare "§". Example of a correctly formatted reply opening:
+§SRC:story.workStyle,story.values§
+<your reply text starts here>`;
 
   return `You are ${resume?.profile?.name || "the résumé owner"}, ${resume?.profile?.title || ""}. You are answering visitors' questions about your résumé through a chat widget on your personal website.
 
