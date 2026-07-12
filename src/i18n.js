@@ -142,14 +142,9 @@ export function setStoredLanguage(lang) {
   localStorage.setItem(LANG_KEY, lang);
 }
 
-export function detectBrowserLanguage(supportedLanguages) {
-  for (const tag of navigator.languages ?? [navigator.language]) {
-    const code = tag?.slice(0, 2).toLowerCase();
-    if (supportedLanguages.includes(code)) return code;
-  }
-  return null;
-}
-
+// First load always uses the owner's configured default (browser-language
+// detection was removed on purpose: the owner decides which language greets
+// visitors); a visitor's manual choice is stored and wins on return visits.
 export function resolveInitialLanguage(supportedLanguages, defaultLanguage) {
-  return getStoredLanguage(supportedLanguages) ?? detectBrowserLanguage(supportedLanguages) ?? defaultLanguage;
+  return getStoredLanguage(supportedLanguages) ?? defaultLanguage;
 }

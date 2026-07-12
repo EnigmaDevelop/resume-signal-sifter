@@ -1,6 +1,6 @@
 {
   "siteTitle": "Signal Sifter",
-  "defaultLanguage": "tr",
+  "defaultLanguage": "en",
   "supportedLanguages": ["tr", "en"],
   "theme": {
     "default": "system"
